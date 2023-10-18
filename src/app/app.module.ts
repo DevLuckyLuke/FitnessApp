@@ -15,11 +15,20 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { HomeComponent } from './home/home.component';
+import { ExerciseInputComponent } from './exercise-input/exercise-input.component';
+
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloWorlComponent
+    HelloWorlComponent,
+    HomeComponent,
+    ExerciseInputComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +42,10 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     provideMessaging(() => getMessaging()),
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    FormsModule,
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
