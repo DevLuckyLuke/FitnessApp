@@ -20,13 +20,15 @@ import { ExerciseInputComponent } from './exercise-input/exercise-input.componen
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ExerciseInputComponent
+    ExerciseInputComponent,
+    ExerciseListComponent
   ],
   imports: [
     BrowserModule,
