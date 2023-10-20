@@ -23,4 +23,11 @@ export class ExerciseListComponent implements OnInit {
     this.exercise_collection = this.firestore.collection('Exercises');
     this.exercisepost = this.exercise_collection.valueChanges();
   }
+
+  RemoveExercise(exercise: HTMLHeadElement){
+    const title = exercise.innerText;
+    this.firestore.collection('Exercises').doc(title).delete();
+  }
+
+
 }
