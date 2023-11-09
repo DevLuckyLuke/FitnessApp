@@ -21,6 +21,9 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ExerciseListComponent } from './exercise-list/exercise-list.component';
+import { NewWorkoutComponent } from './new-workout/new-workout.component';
+import { SelectExerciseComponent } from './select-exercise/select-exercise.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { ExerciseListComponent } from './exercise-list/exercise-list.component';
     AppComponent,
     HomeComponent,
     ExerciseInputComponent,
-    ExerciseListComponent
+    ExerciseListComponent,
+    NewWorkoutComponent,
+    SelectExerciseComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
