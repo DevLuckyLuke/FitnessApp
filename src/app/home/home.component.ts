@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  //This Component should work as a Home hub with four buttons
+  
+  constructor() { }
+
+  
 
 }
