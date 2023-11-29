@@ -12,7 +12,8 @@
         <ul class="exercise-list" id="exercise-list">
           <li *ngFor="let exercise of exercises">{{ exercise.name }}</li>
         </ul>
-        <button class="button" (click)="addExercise()">Übung Hinzufügen</button>
+        <button class="button" routerLink="/select-exercise">Add Exercise</button>
+
       </div>
       
 </body>

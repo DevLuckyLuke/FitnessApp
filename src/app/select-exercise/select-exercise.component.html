@@ -17,15 +17,17 @@ Copy code
     <label for="exercise-select">Choose Exercise</label>
     <select id="exercise-select" name="exercises">
       <option value="">Select an exercise...</option>
-      <option value="bench_press">Bench Press</option>
-      <option value="squats">Squats</option>
-      <!-- Add more options here -->
+      <option *ngFor="let exercise of exercises" [value]="exercise.id">
+        {{ exercise.title }}
+      </option>
     </select>
     <label for="reps-input">Reps</label>
-    <input type="number" id="reps-input" name="reps" placeholder="Look at this placeholder">
+    <input type="number" id="reps-input" name="reps" [(ngModel)]="reps" placeholder="e.g. 10">
+    <label for="sets-input">Sets</label>
+    <input type="number" id="sets-input" name="sets" [(ngModel)]="sets" placeholder="e.g. 3">
     <label for="weight-input">Weight</label>
-    <input type="number" id="weight-input" name="weight" placeholder="Look at this placeholder">
-    <button type="submit" class="button">Add Exercise</button>
+    <input type="number" id="weight-input" name="weight" [(ngModel)]="weight" placeholder="e.g. 50">
+    <button type="submit" class="button" routerLink="/new-workout">Add Exercise</button>
   </form>
 </div>
 </body>
