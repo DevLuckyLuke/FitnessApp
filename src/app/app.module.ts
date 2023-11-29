@@ -24,6 +24,8 @@ import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { NewWorkoutComponent } from './new-workout/new-workout.component';
 import { SelectExerciseComponent } from './select-exercise/select-exercise.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { WorkoutListComponent } from './workout-list/workout-list.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ExerciseListComponent,
     NewWorkoutComponent,
     SelectExerciseComponent,
-    DashboardComponent
+    DashboardComponent,
+    WorkoutListComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
-    ScreenTrackingService,UserTrackingService
+    ScreenTrackingService,UserTrackingService, DatePipe
   ],
   bootstrap: [AppComponent]
 })
