@@ -20,7 +20,7 @@ export class HomeComponent {
       .then(() => {
         console.log('Neues Workout erstellt');
         
-        this.router.navigate(['/new-workout']); 
+        this.router.navigate(['/NewWorkout']); 
       })
       .catch(error => {
         console.error('Fehler beim Erstellen des Workouts:', error);

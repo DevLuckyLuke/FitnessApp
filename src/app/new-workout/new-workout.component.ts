@@ -11,20 +11,27 @@ import { Workout } from '../Model/workout.model';
 })
 export class NewWorkoutComponent implements OnInit {
   exercises: WorkoutExercise[] = [];
-  workoutId: string = 'some-workout-id'; // Die ID des Workouts
+  workoutId: string = ''; // Die ID des Workouts
   
   constructor(private workoutService: WorkoutService) {}
 
   ngOnInit() {
-    this.workoutService.getExercisesFromWorkout(this.workoutId)
-      .subscribe(
-        exercises => {
-          this.exercises = exercises;
-        },
-        error => {
-          console.error('Error loading exercises:', error);
-        }
-      );
+    const workoutId = this.workoutService.getCurrentWorkoutId();
+    if (workoutId) {
+      this.workoutService.getExercisesFromWorkout(workoutId)
+        .subscribe(
+          exercises => {
+            this.exercises = exercises;
+          },
+          error => {
+            console.error('Error loading exercises:', error);
+          }
+        );
+    } else {
+      console.error('No valid workout ID found');
+      // Geeignete Fehlerbehandlung hier
+    }
   }
+  
 
 }

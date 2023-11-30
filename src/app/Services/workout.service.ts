@@ -9,34 +9,47 @@ import { WorkoutExercise } from '../Model/workout-exercise.model';
 })
 export class WorkoutService {
 
+  private currentWorkoutId: string | null = null;
+
+  setCurrentWorkoutId(workoutId: string) {
+    this.currentWorkoutId = workoutId;
+  }
+
+  getCurrentWorkoutId(): string | null {
+    return this.currentWorkoutId;
+  }
+
   constructor(private firestore: AngularFirestore) {}
 
   addWorkout(): Promise<void> {
     const workout: Workout = {
       date: new Date().toISOString(),
-      user: 'userId', // Replace with actual user ID
-      exercises: [] // Initially empty
+      user: 'userId',
+      exercises: [] 
     };
   
     return this.firestore.collection('Workouts').add(workout)
       .then(docRef => {
         console.log('Workout created with ID:', docRef.id);
+        this.setCurrentWorkoutId(docRef.id); 
       })
       .catch(error => {
         console.error('Error creating workout:', error);
-        throw error; // Re-throw the error for caller to handle if needed
+        throw error;
       });
   }
   
 
-  // Methode zum Hinzufügen einer Übung zu einem spezifischen Workout
+ 
   addExerciseToWorkout(workoutId: string, exercise: WorkoutExercise): Promise<void> {
     return this.firestore.collection(`Workouts/${workoutId}/Workout-Exercise-List`).add(exercise).then(() => {});
   }
+
+
  
   getExercisesFromWorkout(workoutId: string): Observable<WorkoutExercise[]> {
-    return this.firestore.collection<WorkoutExercise>(`Workouts/${workoutId}/Workout-ExerciseList`)
-      .valueChanges({ idField: 'id' }) // Diese Option fügt jedem WorkoutExercise-Objekt eine 'id'-Eigenschaft hinzu
+    return this.firestore.collection<WorkoutExercise>(`Workouts/${workoutId}/Workout-Exercise-List`)
+      .valueChanges({ idField: 'id' }) 
       .pipe(
         map(exercises => exercises as WorkoutExercise[])
       );

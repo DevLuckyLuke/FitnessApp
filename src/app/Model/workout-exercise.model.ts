@@ -1,7 +1,8 @@
 export interface WorkoutExercise {
-    name: string; // oder 'exerciseId' wenn Sie die ID der Übung aus der 'Exercises'-Sammlung speichern möchten
-    repetition: number;
-    sets: number;
+    name: string;
+    set1: number;
+    set2: number;
+    set3: number;
     weight: number;
   }
   

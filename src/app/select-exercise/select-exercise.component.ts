@@ -13,8 +13,9 @@ import { WorkoutExercise } from '../Model/workout-exercise.model'; // Importiere
 export class SelectExerciseComponent implements OnInit {
   exercises: Exercise[] = [];
   selectedExercise: Exercise | null = null; // initialisieren Sie es als null
-  reps: number | null = null;
-  sets: number | null = null;
+  set1: number | null = null;
+  set2: number | null = null;
+  set3: number | null = null;
   weight: number | null = null;
 
   constructor(
@@ -35,21 +36,25 @@ export class SelectExerciseComponent implements OnInit {
   }
 
   addExercise() {
-    if (this.selectedExercise && this.reps && this.sets && this.weight) {
+    if (this.selectedExercise && this.set1 && this.set2 && this.set3 && this.weight) {
       const newWorkoutExercise: WorkoutExercise = {
-        name: this.selectedExercise.title, // oder ein anderes Feld, das die Übung identifiziert
-        repetition: this.reps,
-        sets: this.sets,
+        name: this.selectedExercise.title, 
+        set1: this.set1,
+        set2: this.set1,
+        set3: this.set1,
         weight: this.weight
       };
-
-      // Angenommen, Sie haben eine Workout-ID
-      const workoutId = 'some-workout-id'; 
-      this.workoutService.addExerciseToWorkout(workoutId, newWorkoutExercise).then(() => {
-        this.router.navigate(['/new-workout']);
-      }).catch(error => {
-        console.error('Error adding exercise to workout: ', error);
-      });
+  
+      const workoutId = this.workoutService.getCurrentWorkoutId();
+      if (workoutId !== null) { 
+        this.workoutService.addExerciseToWorkout(workoutId, newWorkoutExercise).then(() => {
+          this.router.navigate(['/NewWorkout']);
+        }).catch(error => {
+          console.error('Error adding exercise to workout: ', error);
+        });
+      } else {
+        console.error('No active workout ID found');
+      }
     } else {
       console.error('Incomplete form data');
     }

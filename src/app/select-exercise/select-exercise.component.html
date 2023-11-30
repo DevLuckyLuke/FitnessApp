@@ -1,8 +1,3 @@
-
-For the second interface of the workout app, here's a corresponding HTML structure with embedded CSS:
-
-html
-Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,21 +8,23 @@ Copy code
 <body>
 <div class="container">
   <h1>Exercise</h1>
-  <form>
+  <form (ngSubmit)="addExercise()">
     <label for="exercise-select">Choose Exercise</label>
-    <select id="exercise-select" name="exercises">
+    <select id="exercise-select" name="exercises" [(ngModel)]="selectedExercise">
       <option value="">Select an exercise...</option>
-      <option *ngFor="let exercise of exercises" [value]="exercise.id">
+      <option *ngFor="let exercise of exercises" [ngValue]="exercise">
         {{ exercise.title }}
       </option>
     </select>
-    <label for="reps-input">Reps</label>
-    <input type="number" id="reps-input" name="reps" [(ngModel)]="reps" placeholder="e.g. 10">
-    <label for="sets-input">Sets</label>
-    <input type="number" id="sets-input" name="sets" [(ngModel)]="sets" placeholder="e.g. 3">
+    <label for="sets-input">Set 1</label>
+    <input type="number" id="sets-input" name="set1" [(ngModel)]="set1" placeholder="e.g. 10">
+    <label for="sets-input">Set 2</label>
+    <input type="number" id="sets-input" name="set2" [(ngModel)]="set2" placeholder="e.g. 10">
+    <label for="sets-input">Set 3</label>
+    <input type="number" id="sets-input" name="set3" [(ngModel)]="set3" placeholder="e.g. 10">
     <label for="weight-input">Weight</label>
     <input type="number" id="weight-input" name="weight" [(ngModel)]="weight" placeholder="e.g. 50">
-    <button type="submit" class="button" routerLink="/new-workout">Add Exercise</button>
+    <button type="submit" class="button">Add Exercise</button>
   </form>
 </div>
 </body>
