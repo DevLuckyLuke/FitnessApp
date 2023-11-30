@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { NewWorkoutComponent } from './new-workout/new-workout.component';
 import { ExerciseInputComponent } from './exercise-input/exercise-input.component';
+import { SelectExerciseComponent } from './select-exercise/select-exercise.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'NewWorkout', component: NewWorkoutComponent},
   {path: 'NewExercise', component: ExerciseInputComponent},
   {path: 'Dashboard', component: DashboardComponent},
+  {path: 'select-exercise', component: SelectExerciseComponent },
   {path: '**', redirectTo: '/Home', pathMatch:'full'},
 ];
 

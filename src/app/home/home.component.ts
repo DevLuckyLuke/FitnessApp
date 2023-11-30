@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { WorkoutService } from '../Services/workout.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  //This Component should work as a Home hub with four buttons
   
-  constructor() { }
+  constructor(
+    private workoutService: WorkoutService,
+    private router: Router 
+  ) {}
 
-  
+
+  createNewWorkout() {
+    this.workoutService.addWorkout()
+      .then(() => {
+        console.log('Neues Workout erstellt');
+        
+        this.router.navigate(['/NewWorkout']); 
+      })
+      .catch(error => {
+        console.error('Fehler beim Erstellen des Workouts:', error);
+      });
+  }
 
 }
