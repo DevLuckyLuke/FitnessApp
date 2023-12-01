@@ -1,0 +1,10 @@
+<div class="header-container">
+    <h1>Workouts</h1>
+</div>
+<div class="workout-container">
+    <div *ngFor="let workout of workouts" class="workout-item" (click)="onWorkoutClick(workout)">
+        <p>{{ workout.name }}</p>
+        <p>{{ formattedWorkoutDate(workout.date) }}</p>
+        <p>{{ workout.user.username }}</p>
+    </div>
+</div>

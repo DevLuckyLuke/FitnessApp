@@ -17,8 +17,11 @@ const routes: Routes = [
   {path: 'NewWorkout', component: NewWorkoutComponent},
   {path: 'NewExercise', component: ExerciseInputComponent},
   {path: 'Dashboard', component: DashboardComponent},
-  {path: 'WorkoutList', component: WorkoutListComponent},
+<<<<<<< HEAD
   {path: 'select-exercise', component: SelectExerciseComponent },
+=======
+  {path: 'WorkoutList', component: WorkoutListComponent},
+>>>>>>> createWorkoutList
   {path: '**', redirectTo: '/Home', pathMatch:'full'},
 ];
 
