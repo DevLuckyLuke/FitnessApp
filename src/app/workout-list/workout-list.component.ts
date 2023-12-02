@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Workout } from '../models/workout.model';
 import { DatePipe } from '@angular/common';
 import { Timestamp } from "@firebase/firestore-types";
+import { Workout } from '../Model/workout.model';
 
 @Component({
   selector: 'app-workout-list',
@@ -24,8 +24,8 @@ export class WorkoutListComponent implements OnInit {
     });
   }
 
-  formattedWorkoutDate(date: Timestamp): string {
-    let formattedDate = this.datePipe.transform(date.toDate(), 'dd.MMM.yyyy HH:mm') ?? "";
+  formattedWorkoutDate(date: Date): string {
+    let formattedDate = this.datePipe.transform(date, 'dd.MMM.yyyy HH:mm') ?? "";
     return formattedDate;
   }
 

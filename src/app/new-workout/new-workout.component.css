@@ -60,3 +60,18 @@ body {
     padding: 10px 15px;
     border: 2px solid white; 
   }
+
+
+  .input-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .styled-input {
+    width: 80%; 
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }

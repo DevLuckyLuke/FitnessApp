@@ -11,6 +11,8 @@ export class WorkoutService {
 
   private currentWorkoutId: string | null = null;
 
+  
+
   setCurrentWorkoutId(workoutId: string) {
     this.currentWorkoutId = workoutId;
   }
@@ -23,7 +25,8 @@ export class WorkoutService {
 
   addWorkout(): Promise<void> {
     const workout: Workout = {
-      date: new Date().toISOString(),
+      name: '',
+      date: new Date(),
       user: 'userId',
       exercises: [] 
     };
@@ -52,6 +55,17 @@ export class WorkoutService {
       .valueChanges({ idField: 'id' }) 
       .pipe(
         map(exercises => exercises as WorkoutExercise[])
+      );
+  }
+
+  setWorkoutName(workoutId: string, name: string): Promise<void> {
+    return this.firestore.doc(`Workouts/${workoutId}`).update({ name: name });
+  }
+
+  getWorkoutName(workoutId: string): Observable<string> {
+    return this.firestore.doc<Workout>(`Workouts/${workoutId}`).valueChanges()
+      .pipe(
+        map(workout => workout?.name as string)
       );
   }
 
