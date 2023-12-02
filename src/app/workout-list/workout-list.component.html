@@ -1,10 +1,12 @@
 <div class="header-container">
     <h1>Workouts</h1>
 </div>
-<div class="workout-container">
-    <div *ngFor="let workout of workouts" class="workout-item" (click)="onWorkoutClick(workout)">
-        <!--<p>{{ workout.name }}</p> -->
-        <p>{{ formattedWorkoutDate(workout.date) }}</p>
-        <p>{{ workout.user }}</p>
+<body>
+    <div class="container">
+        <div *ngFor="let workout of workouts" class="workout-item" (click)="onWorkoutClick(workout)">
+            <p>{{ workout.name ? workout.name : 'Unnamed'}}</p>
+            <p>{{ formattedWorkoutDate(workout.date) }}</p>
+        </div>
+        <button class="back-button" routerLink="/Home">Home</button>
     </div>
-</div>
+<body>
