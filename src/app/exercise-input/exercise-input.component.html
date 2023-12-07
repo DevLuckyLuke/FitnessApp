@@ -1,11 +1,23 @@
-<div class="Wrapper">
-
-    <label>Exercise Input</label>
-    <div>
-        <input [(ngModel)]="title" type="text" placeholder="Title">
-        <input [(ngModel)]="bodyArea" type="textarea" placeholder="Body area">
-        <input type="submit" (click)="SentToFirebase()">
-        <button class="back-button" routerLink="/home">Home Menü</button>
-    </div>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Exercise</title>
+</head>
+<body>
+<div class="container">
+  <h1>New Exercise</h1>
+  <form (ngSubmit)="addExercise()">
+    
+    
+    <label for="sets-input">Name</label>
+    <input type="string" id="sets-input" name="title" [(ngModel)]="title" placeholder="type your name here...">
+    <label for="sets-input">Bodyarea</label>
+    <input type="string" id="sets-input" name="bodyArea" [(ngModel)]="bodyArea" placeholder="type your TODO bodyarea...">
+    
+    <button type="submit" class="button">Add Exercise</button>
+  </form>
 </div>
+</body>
+</html>
