@@ -54,6 +54,7 @@ export class SelectExerciseComponent implements OnInit {
         });
       } else {
         console.error('No active workout ID found');
+        this.router.navigate(['/Home']);
       }
     } else {
       console.error('Incomplete form data');

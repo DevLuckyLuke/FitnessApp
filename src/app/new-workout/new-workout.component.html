@@ -9,11 +9,14 @@
 <body>
     <div class="container">
         <h1>Neues Workout</h1>
+        <div class="input-container">
+          <input type="text" [(ngModel)]="workoutName" (input)="setWorkoutName()" class="styled-input" placeholder="Enter workout name">
+        </div>
         <ul class="exercise-list" id="exercise-list">
           <li *ngFor="let exercise of exercises">{{ exercise.name }}</li>
         </ul>
         <button class="button" routerLink="/select-exercise">Add Exercise</button>
-        <button class="back-button" routerLink="/home">Home Menü</button>
+        <button class="back-button" routerLink="/Home">Fertig</button>
       </div>
       
 </body>
