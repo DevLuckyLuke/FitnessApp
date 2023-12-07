@@ -21,7 +21,7 @@ constructor(
 title: any;
 bodyArea: any;
 
-SentToFirebase(){
+addExercise(){
 
 //collect inputs
 const title: any = this.title;
