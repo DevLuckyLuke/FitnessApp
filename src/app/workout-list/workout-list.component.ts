@@ -22,8 +22,7 @@ export class WorkoutListComponent implements OnInit {
   constructor(private firestore: AngularFirestore, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
-    this.workouts = [];
-    this.firestore.collection<Workout>('Workouts', ref => ref.orderBy('date', 'desc'))
+    /*this.firestore.collection<Workout>('Workouts', ref => ref.orderBy('date', 'desc'))
       .get().toPromise().then(querySnapshot => {
         if (querySnapshot) {
           this.workouts = querySnapshot.docs.map(doc => doc.data() as Workout);
@@ -35,14 +34,14 @@ export class WorkoutListComponent implements OnInit {
           
         }
       });
+*/
 
-/*
     this.workoutsSubscription = this.firestore.collection<Workout>('Workouts', ref => ref.orderBy('date', 'desc'))
     .valueChanges().subscribe((workouts: Workout[]) => {
       this.workouts = workouts;
       this.updatePagedWorkouts();
     });
-*/
+
     
   }
 
