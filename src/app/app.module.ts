@@ -26,6 +26,8 @@ import { SelectExerciseComponent } from './select-exercise/select-exercise.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorkoutListComponent } from './workout-list/workout-list.component';
 import { DatePipe } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -53,6 +55,7 @@ import { DatePipe } from '@angular/common';
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
     FormsModule,
+    MatPaginatorModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],

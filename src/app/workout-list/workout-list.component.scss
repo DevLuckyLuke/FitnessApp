@@ -4,27 +4,13 @@ body {
   color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
   
-  margin: 0;
-}
-.header-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #088494; 
-    border: none;
-    color: white;
-    padding: 15px 30px;
-    margin: 10px 10px; 
-    border-radius: 10px; 
-    font-size: 16px; 
-    font-weight: bold;
+  margin: 5%;
 }
 
 .workout-item {
     display: inline-flex;
-    justify-content: center;
+    justify-content: left;
     gap: 5vw; 
     background: #088494; 
     border: none;

@@ -1,12 +1,20 @@
-<div class="header-container">
-    <h1>Workouts</h1>
-</div>
-<body>
-    <div class="container">
-        <div *ngFor="let workout of workouts" class="workout-item" (click)="onWorkoutClick(workout)">
-            <p>{{ workout.name ? workout.name : 'Unnamed'}}</p>
-            <p>{{ formattedWorkoutDate(workout.date) }}</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Workouts</h1>
+            <div *ngFor="let workout of pagedWorkouts" class="workout-item" (click)="onWorkoutClick(workout)">
+                <p>{{ workout.name ? workout.name : 'Unnamed'}}</p>
+                <p>{{ formattedWorkoutDate(workout.date) }}</p>
+            </div>
+            <mat-paginator [pageIndex]="pageIndex" [pageSize]="pageSize" [length]="workouts.length" (page)="onPageChange($event)">
+            </mat-paginator>
+            <button class="back-button" routerLink="/Home">Home</button>
         </div>
-        <button class="back-button" routerLink="/Home">Home</button>
-    </div>
-<body>
+    </body>
+</html>
+
