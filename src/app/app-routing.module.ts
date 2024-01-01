@@ -4,9 +4,11 @@ import { HomeComponent } from './home/home.component';
 import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { NewWorkoutComponent } from './new-workout/new-workout.component';
 import { ExerciseInputComponent } from './exercise-input/exercise-input.component';
-import { SelectExerciseComponent } from './select-exercise/select-exercise.component';
+import { SelectStrengthExerciseComponent } from './select-strength-exercise/select-strength-exercise.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorkoutListComponent } from './workout-list/workout-list.component';
+import { SelectCategoryComponent } from './select-category/select-category.component';
+import { SelectCardioExerciseComponent } from './select-cardio-exercise/select-cardio-exercise.component';
 
 
 //Syntax of paths was advised by copilot
@@ -18,7 +20,9 @@ const routes: Routes = [
   {path: 'NewExercise', component: ExerciseInputComponent},
   {path: 'Dashboard', component: DashboardComponent},
   {path: 'WorkoutList', component: WorkoutListComponent},
-  {path: 'select-exercise', component: SelectExerciseComponent },
+  {path: 'select-strength-exercise', component: SelectStrengthExerciseComponent },
+  {path: 'select-cardio-exercise', component: SelectCardioExerciseComponent },
+  {path: 'select-category', component: SelectCategoryComponent },
   {path: '**', redirectTo: '/Home', pathMatch:'full'},
 ];
 

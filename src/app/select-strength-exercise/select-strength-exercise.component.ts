@@ -6,11 +6,11 @@ import { Exercise } from '../Model/exercise.model';
 import { WorkoutExercise } from '../Model/workout-exercise.model'; // Importieren Sie das WorkoutExercise-Modell
 
 @Component({
-  selector: 'app-select-exercise',
-  templateUrl: './select-exercise.component.html',
-  styleUrls: ['./select-exercise.component.css']
+  selector: 'app-select-strength-exercise',
+  templateUrl: './select-strength-exercise.component.html',
+  styleUrls: ['./select-strength-exercise.component.css']
 })
-export class SelectExerciseComponent implements OnInit {
+export class SelectStrengthExerciseComponent implements OnInit {
   exercises: Exercise[] = [];
   selectedExercise: Exercise | null = null; // initialisieren Sie es als null
   set1: number | null = null;

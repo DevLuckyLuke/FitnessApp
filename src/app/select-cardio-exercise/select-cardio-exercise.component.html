@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise Input</title>
+</head>
+<body>
+<div class="container">
+  <h1>Cardio</h1>
+  <form (ngSubmit)="addExercise()">
+    <label for="exercise-select">Choose Exercise</label>
+    <select id="exercise-select" name="exercises" [(ngModel)]="selectedExercise">
+      <option value="">Select an exercise...</option>
+      <option *ngFor="let exercise of exercises" [ngValue]="exercise">
+        {{ exercise.title }}
+      </option>
+    </select>
+    <label for="sets-input">KM</label>
+    <input type="number" id="sets-input" name="km" [(ngModel)]="km" placeholder="e.g. 10">
+    <label for="sets-input">Time</label>
+    <input type="number" id="sets-input" name="time" [(ngModel)]="time" placeholder="e.g. 10">
+    <button type="submit" class="button">Add Exercise</button>
+  </form>
+</div>
+</body>
+</html>

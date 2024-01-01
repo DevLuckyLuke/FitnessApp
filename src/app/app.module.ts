@@ -22,12 +22,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ExerciseListComponent } from './exercise-list/exercise-list.component';
 import { NewWorkoutComponent } from './new-workout/new-workout.component';
-import { SelectExerciseComponent } from './select-exercise/select-exercise.component';
+import { SelectStrengthExerciseComponent } from './select-strength-exercise/select-strength-exercise.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorkoutListComponent } from './workout-list/workout-list.component';
 import { DatePipe } from '@angular/common';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SelectCategoryComponent } from './select-category/select-category.component';
+import { SelectCardioExerciseComponent } from './select-cardio-exercise/select-cardio-exercise.component';
 
 
 @NgModule({
@@ -37,9 +39,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ExerciseInputComponent,
     ExerciseListComponent,
     NewWorkoutComponent,
-    SelectExerciseComponent,
+    SelectStrengthExerciseComponent,
     DashboardComponent,
-    WorkoutListComponent
+    WorkoutListComponent,
+    SelectCategoryComponent,
+    SelectCardioExerciseComponent
   ],
   imports: [
     BrowserModule,
