@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
 import { Workout } from '../Model/workout.model';
-import { WorkoutExercise } from '../Model/workout-exercise.model';
+import { StrengthWorkoutExercise } from '../Model/strength-workout-exercise.model';
+import { CardioWorkoutExercise } from '../Model/cardio-workout-exercise';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,6 @@ export class WorkoutService {
       name: '',
       date: new Date(),
       user: 'userId',
-      exercises: [] 
     };
   
     return this.firestore.collection('Workouts').add(workout)
@@ -44,17 +44,30 @@ export class WorkoutService {
   
 
  
-  addExerciseToWorkout(workoutId: string, exercise: WorkoutExercise): Promise<void> {
+  addStrengthExerciseToWorkout(workoutId: string, exercise: StrengthWorkoutExercise): Promise<void> {
     return this.firestore.collection(`Workouts/${workoutId}/Workout-Exercise-List`).add(exercise).then(() => {});
   }
 
 
  
-  getExercisesFromWorkout(workoutId: string): Observable<WorkoutExercise[]> {
-    return this.firestore.collection<WorkoutExercise>(`Workouts/${workoutId}/Workout-Exercise-List`)
+  getStrengthExercisesFromWorkout(workoutId: string): Observable<StrengthWorkoutExercise[]> {
+    return this.firestore.collection<StrengthWorkoutExercise>(`Workouts/${workoutId}/Workout-Exercise-List`)
       .valueChanges({ idField: 'id' }) 
       .pipe(
-        map(exercises => exercises as WorkoutExercise[])
+        map(exercises => exercises as StrengthWorkoutExercise[])
+      );
+  }
+
+  addCardioExerciseToWorkout(workoutId: string, exercise: CardioWorkoutExercise): Promise<void> {
+    return this.firestore.collection(`Workouts/${workoutId}/Workout-Exercise-List`).add(exercise).then(() => {});
+  }
+
+  // Methode, um Cardio-Übungen aus einem Workout zu erhalten
+  getCardioExercisesFromWorkout(workoutId: string): Observable<CardioWorkoutExercise[]> {
+    return this.firestore.collection<CardioWorkoutExercise>(`Workouts/${workoutId}/Workout-Exercise-List`)
+      .valueChanges({ idField: 'id' }) 
+      .pipe(
+        map(exercises => exercises as CardioWorkoutExercise[])
       );
   }
 

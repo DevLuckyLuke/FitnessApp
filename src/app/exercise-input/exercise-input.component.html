@@ -15,7 +15,12 @@
     <input type="string" id="sets-input" name="title" [(ngModel)]="title" placeholder="type your name here...">
     <label for="sets-input">Bodyarea</label>
     <input type="string" id="sets-input" name="bodyArea" [(ngModel)]="bodyArea" placeholder="type your TODO bodyarea...">
-    
+    <label for="category-select">Category</label>
+    <select id="category-select" name="category" [(ngModel)]="category">
+        <option value="">Select a category...</option>
+        <option value="Cardio">Cardio</option>
+        <option value="Strength">Strength</option>
+    </select>
     <button type="submit" class="button">Add Exercise</button>
   </form>
   <button class="back-button" routerLink="/Home">Zurück</button>

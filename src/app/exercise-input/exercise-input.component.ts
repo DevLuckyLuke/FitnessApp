@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-export interface exercise {
-  title: any; 
-  bodyArea: any;
+export interface Exercise {
+  title: string;
+  bodyArea: string;
+  category: string; 
 }
 
 @Component({
@@ -12,26 +13,31 @@ export interface exercise {
   styleUrls: ['./exercise-input.component.css']
 })
 export class ExerciseInputComponent {
+  title: string = '';
+  bodyArea: string = '';
+  category: string = ''; 
 
-constructor(
-  private firestore: AngularFirestore
-) {}
+  constructor(private firestore: AngularFirestore) {}
 
+  addExercise() {
+    const exercise: Exercise = {
+      title: this.title,
+      bodyArea: this.bodyArea,
+      category: this.category
+    };
 
-title: any;
-bodyArea: any;
+    this.firestore.collection('Exercises').doc(this.title).set(exercise)
+      .then(() => {
+        this.resetForm();        
+      })
+      .catch(error => {
+        console.error("Error adding exercise: ", error);
+      });
+  }
 
-addExercise(){
-
-//collect inputs
-const title: any = this.title;
-const bodyArea: any = this.bodyArea;
-
-console.log(title)
-console.log(bodyArea)
-//send inputs
-const exercise: exercise={title, bodyArea}
-this.firestore.collection('Exercises').doc(this.title).set(exercise)
-
-}
+  resetForm() {
+    this.title = '';
+    this.bodyArea = '';
+    this.category = '';
+  }
 }

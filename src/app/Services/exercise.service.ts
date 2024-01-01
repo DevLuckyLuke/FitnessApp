@@ -12,8 +12,6 @@ export class ExerciseService {
   constructor(private firestore: AngularFirestore) {}
 
   getExercises(): Observable<Exercise[]> {
-    // Hier nutzen wir valueChanges(), aber Sie könnten auch snapshotChanges() verwenden,
-    // wenn Sie zusätzliche Metadaten benötigen, wie z.B. die Dokumenten-ID
     return this.firestore.collection<Exercise>('Exercises').valueChanges({ idField: 'id' });
   }
 
@@ -22,5 +20,15 @@ export class ExerciseService {
     return this.firestore.doc<Exercise>(`Exercises/${id}`).set(exercise);
   }
 
-  // Weitere Methoden für Update oder Delete könnten hier hinzugefügt werden
+  getCardioExercises(): Observable<Exercise[]> {
+    return this.firestore.collection<Exercise>('Exercises', ref => 
+      ref.where('category', '==', 'Cardio')
+    ).valueChanges({ idField: 'id' });
+  }
+
+  getStrengthExercises(): Observable<Exercise[]> {
+    return this.firestore.collection<Exercise>('Exercises', ref => 
+      ref.where('category', '==', 'Strength')
+    ).valueChanges({ idField: 'id' });
+  }
 }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ExerciseService } from '../Services/exercise.service';
 import { WorkoutService } from '../Services/workout.service'; // Importieren Sie den WorkoutService
 import { Exercise } from '../Model/exercise.model';
-import { WorkoutExercise } from '../Model/workout-exercise.model'; // Importieren Sie das WorkoutExercise-Modell
+import { StrengthWorkoutExercise } from '../Model/strength-workout-exercise.model'; // Importieren Sie das WorkoutExercise-Modell
 
 @Component({
   selector: 'app-select-strength-exercise',
@@ -25,7 +25,7 @@ export class SelectStrengthExerciseComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.exerciseService.getExercises().subscribe(
+    this.exerciseService.getStrengthExercises().subscribe(
       (exercises) => {
         this.exercises = exercises;
       },
@@ -37,17 +37,21 @@ export class SelectStrengthExerciseComponent implements OnInit {
 
   addExercise() {
     if (this.selectedExercise && this.set1 && this.set2 && this.set3 && this.weight) {
-      const newWorkoutExercise: WorkoutExercise = {
-        name: this.selectedExercise.title, 
+      const totalReps = this.set1 + this.set2 + this.set3;
+      const caloriesBurned = this.calculateCalories(totalReps, this.weight);
+  
+      const newWorkoutExercise: StrengthWorkoutExercise = {
+        name: this.selectedExercise.title,
         set1: this.set1,
-        set2: this.set1,
-        set3: this.set1,
-        weight: this.weight
+        set2: this.set2,
+        set3: this.set3,
+        weight: this.weight,
+        calories: caloriesBurned
       };
   
       const workoutId = this.workoutService.getCurrentWorkoutId();
-      if (workoutId !== null) { 
-        this.workoutService.addExerciseToWorkout(workoutId, newWorkoutExercise).then(() => {
+      if (workoutId !== null) {
+        this.workoutService.addStrengthExerciseToWorkout(workoutId, newWorkoutExercise).then(() => {
           this.router.navigate(['/NewWorkout']);
         }).catch(error => {
           console.error('Error adding exercise to workout: ', error);
@@ -60,4 +64,11 @@ export class SelectStrengthExerciseComponent implements OnInit {
       console.error('Incomplete form data');
     }
   }
+  
+  calculateCalories(totalReps: number, weight: number) {
+    // Eine einfache Formel zur Kalorienberechnung
+    // Dies ist eine grobe Schätzung und nicht wissenschaftlich fundiert
+    return (totalReps * weight) / 10;
+  }
+  
 }
