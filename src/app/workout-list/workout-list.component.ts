@@ -50,7 +50,6 @@ export class WorkoutListComponent implements OnInit {
   }
 
   formattedWorkoutDate(obj: object): string {
-    console.log("formattedWorkoutDate: " + obj.toString());
     const date = (obj as Timestamp).toDate();
     let formattedDate = this.datePipe.transform(date, 'dd.MMM.yyyy HH:mm') ?? "";
     return formattedDate;
@@ -69,8 +68,6 @@ export class WorkoutListComponent implements OnInit {
   updatePagedWorkouts() {
     const start = this.pageIndex * this.pageSize;
     const end = start + this.pageSize;
-    console.log("start: " + start + " end: " + end);
-    console.log("workouts.length: " + this.workouts.length);
     this.pagedWorkouts = this.workouts.slice(start, end);
   }
 }

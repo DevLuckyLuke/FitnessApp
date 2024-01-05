@@ -16,6 +16,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     width: 300px; /* Passen Sie die Breite nach Bedarf an */
   }
+
   
   h1 {
     text-align: center;
@@ -36,3 +37,16 @@ body {
     width: 90%; 
     margin: 10px auto; 
   }
+
+  .dropdown {
+    width: calc(100% - 20px); /* Berechnet die Breite unter Berücksichtigung des Padding */
+    padding: 10px;
+    margin: 10px 0 30px; /* Fügt Abstand nach unten hinzu */
+    border-radius: 5px;
+    border: 1px solid #34495e;
+    background-color: #2c3e50;
+    color: white;
+    box-sizing: border-box;
+  }
+  
+

@@ -9,6 +9,35 @@
 <body>
     <div class="dashboard-container">
         <h1>Dashboard</h1>
+        <p>Choose Category</p>
+        <select id="workout-category" class="dropdown" (change)="onCategoryChange($event)">
+            <option selected disabled>Choose Category</option>
+            <option value="Cardio">Cardio</option>
+            <option value="Strength">Strength</option>
+        </select>
+
+        <p>Choose Timespan</p>
+        <select id="workout-timespan" class="dropdown" (change)="onTimespanChange($event)">
+            <option value=7>Last 7 Days</option>
+            <option selected value=30>Last 30 Days</option>
+            <option value=365>Last 365 Days</option>
+        </select>
+
+        <div class="stats-container">
+            <div class="cardio-stats" *ngIf="selectedCategory === 'Cardio'">
+                <h2>Cardio Statistics</h2>
+                <p>Sum of Distance: {{ (cardioStats?.distance | number:'1.0-2') ?? 0}} km</p>
+                <p>Sum of Duration: {{ (cardioStats?.time | number:'1.0-2') ?? 0}} min</p>
+                <p>Avarage Calories: {{ (cardioStats?.calories | number:'1.0-2') ?? 0}} kcal</p>
+            </div>
+            <div class="strength-stats" *ngIf="selectedCategory === 'Strength'">
+                <h2>Strength Statistics</h2>
+                <p>Sum of Calories: {{ (strengthStats?.calories | number:'1.0-2') ?? 0}} kcal</p>
+                <p>Avarage Weight: {{ (strengthStats?.avgWeight | number:'1.0-2') ?? 0}} kg</p>
+                <p>Avarage Reps: {{ (strengthStats?.avgReps | number:'1.0-2') ?? 0}}</p>
+            </div>
+        </div>
+
 
         <button class="back-button" routerLink="/home">Home Menü</button>
     </div>

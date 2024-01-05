@@ -3,4 +3,5 @@ export interface CardioWorkoutExercise {
   km: number;
   time: number;
   calories?: number;
+  category: string;
 }

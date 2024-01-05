@@ -46,7 +46,8 @@ export class SelectStrengthExerciseComponent implements OnInit {
         set2: this.set2,
         set3: this.set3,
         weight: this.weight,
-        calories: caloriesBurned
+        calories: caloriesBurned,
+        category: "Strength"
       };
   
       const workoutId = this.workoutService.getCurrentWorkoutId();

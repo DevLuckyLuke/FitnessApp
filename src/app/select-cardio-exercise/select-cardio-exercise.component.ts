@@ -38,7 +38,9 @@ export class SelectCardioExerciseComponent implements OnInit {
       const newWorkoutExercise: CardioWorkoutExercise = {
         name: this.selectedExercise.title,
         km: this.km,
-        time: this.time
+        time: this.time,
+        calories: this.calculateCalories(),
+        category: "Cardio"
       };
   
       const workoutId = this.workoutService.getCurrentWorkoutId();
@@ -56,4 +58,18 @@ export class SelectCardioExerciseComponent implements OnInit {
       console.error('Incomplete form data');
     }
   }
+
+  calculateCalories(): number {
+    if (this.km === null || this.time === null) {
+      return 0;
+    }
+
+    const averageCaloriesPerMinute = 8; // This is an assumed average, modify as needed
+    const caloriesBurned = averageCaloriesPerMinute * this.time;
+
+    return caloriesBurned;
+  }
 }
+
+
+

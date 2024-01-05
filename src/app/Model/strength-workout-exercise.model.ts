@@ -4,6 +4,7 @@ export interface StrengthWorkoutExercise {
   set2: number;
   set3: number;
   weight: number;
-  calories?: number; 
+  calories?: number;
+  category: string;
 }
   
