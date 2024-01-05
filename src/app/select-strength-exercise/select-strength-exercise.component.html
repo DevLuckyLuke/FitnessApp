@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise Input</title>
+</head>
+<body>
+<div class="container">
+  <h1>Exercise</h1>
+  <form (ngSubmit)="addExercise()">
+    <label for="exercise-select">Choose Exercise</label>
+    <select id="exercise-select" name="exercises" [(ngModel)]="selectedExercise">
+      <option value="">Select an exercise...</option>
+      <option *ngFor="let exercise of exercises" [ngValue]="exercise">
+        {{ exercise.title }}
+      </option>
+    </select>
+    <label for="sets-input">Set 1</label>
+    <input type="number" id="sets-input" name="set1" [(ngModel)]="set1" placeholder="e.g. 10">
+    <label for="sets-input">Set 2</label>
+    <input type="number" id="sets-input" name="set2" [(ngModel)]="set2" placeholder="e.g. 10">
+    <label for="sets-input">Set 3</label>
+    <input type="number" id="sets-input" name="set3" [(ngModel)]="set3" placeholder="e.g. 10">
+    <label for="weight-input">Weight</label>
+    <input type="number" id="weight-input" name="weight" [(ngModel)]="weight" placeholder="e.g. 50">
+    <button type="submit" class="button">Add Exercise</button>
+    <button class="back-button" routerLink="/Home">Zurück</button>
+  </form>
+</div>
+</body>
+</html>
