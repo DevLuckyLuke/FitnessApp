@@ -43,21 +43,14 @@ export class SelectCardioExerciseComponent implements OnInit {
         category: "Cardio"
       };
   
-      const workoutId = this.workoutService.getCurrentWorkoutId();
-      if (workoutId !== null) {
-        this.workoutService.addCardioExerciseToWorkout(workoutId, newWorkoutExercise).then(() => {
-          this.router.navigate(['/NewWorkout']);
-        }).catch(error => {
-          console.error('Error adding exercise to workout: ', error);
-        });
-      } else {
-        console.error('No active workout ID found');
-        this.router.navigate(['/Home']);
-      }
+      // Fügen Sie die Übung zum temporären Array im Service hinzu
+      this.workoutService.addTemporaryExercise(newWorkoutExercise);
+      this.router.navigate(['/NewWorkout']);
     } else {
       console.error('Incomplete form data');
     }
   }
+  
 
   calculateCalories(): number {
     if (this.km === null || this.time === null) {

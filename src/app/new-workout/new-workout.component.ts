@@ -15,50 +15,59 @@ export class NewWorkoutComponent implements OnInit {
   exercises: (CardioWorkoutExercise | StrengthWorkoutExercise)[] = [];
   workoutId: string = ''; // Die ID des Workouts
   workoutName: string = ""; // Der Name des Workouts
+  temporaryExercises: (CardioWorkoutExercise | StrengthWorkoutExercise)[] = [];
+  temporaryWorkoutName: string = '';
   
   constructor(private workoutService: WorkoutService, private router: Router ) {}
 
+  
+
   ngOnInit() {
-    this.loadExercises();
+    this.loadTemporaryExercises();
+    this.loadCurrentWorkoutName();
   }
 
-  loadExercises() {
-    const workoutId = this.workoutService.getCurrentWorkoutId();
-    if (workoutId) {
-      // Laden Sie sowohl Cardio- als auch Strength-Übungen und fügen Sie sie zur Liste hinzu
-      this.workoutService.getCardioExercisesFromWorkout(workoutId).subscribe(
-        cardioExercises => {
-          this.exercises = [...this.exercises, ...cardioExercises];
-        },
-        error => console.error('Error loading cardio exercises:', error)
-      );
-
-      this.workoutService.getStrengthExercisesFromWorkout(workoutId).subscribe(
-        strengthExercises => {
-          this.exercises = [...this.exercises, ...strengthExercises];
-        },
-        error => console.error('Error loading strength exercises:', error)
-      );
+  saveWorkout() {
+    const exercises = this.workoutService.getTemporaryExercises();
+    if (exercises.length > 0) {
+      this.workoutService.saveWorkout(this.temporaryWorkoutName, exercises).then(() => {
+        console.log('Workout erfolgreich gespeichert');
+        this.workoutService.clearTemporaryExercises();
+        this.router.navigate(['/Workouts']);
+      }).catch(error => {
+        console.error('Fehler beim Speichern des Workouts:', error);
+      });
     } else {
-      console.error('No valid workout ID found');
+      console.error('Keine Übungen hinzugefügt');
     }
+  }
+  
+
+  addExercise(exercise: CardioWorkoutExercise | StrengthWorkoutExercise) {
+    if (!this.isExerciseAlreadyAdded(exercise)) {
+      this.temporaryExercises.push(exercise);
+    }
+  }
+ 
+  
+  private isExerciseAlreadyAdded(exerciseToAdd: CardioWorkoutExercise | StrengthWorkoutExercise): boolean {
+    return this.exercises.some(exercise => exercise.name === exerciseToAdd.name);
+  }
+  
+
+  loadTemporaryExercises() {
+    this.temporaryExercises = this.workoutService.getTemporaryExercises();
+    this.temporaryWorkoutName = this.workoutService.getTemporaryWorkoutName();
+  }
+
+  loadCurrentWorkoutName() {
+    this.temporaryWorkoutName = this.workoutService.getTemporaryWorkoutName();
   }
 
   setWorkoutName() {
-    const workoutId = this.workoutService.getCurrentWorkoutId();
-    if (workoutId) {
-      this.workoutService.setWorkoutName(workoutId, this.workoutName)
-        .then(() => {
-          console.log('Workout name updated: ' + this.workoutName);
-        })
-        .catch(error => {
-          console.error('Error updating workout name:', error);
-        });
-    } else {
-      console.error('No valid workout ID found');
-      // Geeignete Fehlerbehandlung hier
-    }
+    this.workoutService.setTemporaryWorkoutName(this.temporaryWorkoutName);
   }
+  
   
 
 }

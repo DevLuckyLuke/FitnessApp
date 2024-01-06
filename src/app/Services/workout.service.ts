@@ -10,8 +10,11 @@ import { CardioWorkoutExercise } from '../Model/cardio-workout-exercise';
 })
 export class WorkoutService {
   
+  private temporaryExercises: (CardioWorkoutExercise | StrengthWorkoutExercise)[] = [];
 
   private currentWorkoutId: string | null = null;
+
+  private temporaryWorkoutName: string = '';
 
   
 
@@ -41,6 +44,27 @@ export class WorkoutService {
         console.error('Error creating workout:', error);
         throw error;
       });
+  }
+  
+  saveWorkout(name: string, exercises: (CardioWorkoutExercise | StrengthWorkoutExercise)[]): Promise<void> {
+    const workout: Workout = {
+      name: name,
+      date: new Date(),
+      user: 'userId', // Sie müssen entscheiden, wie Sie den Benutzer bestimmen
+    };
+  
+    return this.firestore.collection('Workouts').add(workout).then(docRef => {
+      console.log('Workout created with ID:', docRef.id);
+      this.setCurrentWorkoutId(docRef.id);
+      return Promise.all(exercises.map(exercise => 
+        this.firestore.collection(`Workouts/${docRef.id}/Workout-Exercise-List`).add(exercise)
+      ));
+    }).then(() => {
+      console.log('All exercises added to the workout');
+    }).catch(error => {
+      console.error('Error creating workout:', error);
+      throw error;
+    });
   }
   
 
@@ -147,6 +171,25 @@ export class WorkoutService {
       );
   }
 
+  addTemporaryExercise(exercise: CardioWorkoutExercise | StrengthWorkoutExercise) {
+    this.temporaryExercises.push(exercise);
+  }
+
+  getTemporaryExercises(): (CardioWorkoutExercise | StrengthWorkoutExercise)[] {
+    return this.temporaryExercises;
+  }
+
+  clearTemporaryExercises() {
+    this.temporaryExercises = [];
+  }
+
+  setTemporaryWorkoutName(name: string) {
+    this.temporaryWorkoutName = name;
+  }
+
+  getTemporaryWorkoutName(): string {
+    return this.temporaryWorkoutName;
+  }
   
 
 }
