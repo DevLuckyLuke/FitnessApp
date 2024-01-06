@@ -15,16 +15,4 @@ export class HomeComponent {
   ) {}
 
 
-  createNewWorkout() {
-    this.workoutService.addWorkout()
-      .then(() => {
-        console.log('Neues Workout erstellt');
-        
-        this.router.navigate(['/NewWorkout']); 
-      })
-      .catch(error => {
-        console.error('Fehler beim Erstellen des Workouts:', error);
-      });
-  }
-
 }
