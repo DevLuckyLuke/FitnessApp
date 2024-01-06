@@ -50,21 +50,14 @@ export class SelectStrengthExerciseComponent implements OnInit {
         category: "Strength"
       };
   
-      const workoutId = this.workoutService.getCurrentWorkoutId();
-      if (workoutId !== null) {
-        this.workoutService.addStrengthExerciseToWorkout(workoutId, newWorkoutExercise).then(() => {
-          this.router.navigate(['/NewWorkout']);
-        }).catch(error => {
-          console.error('Error adding exercise to workout: ', error);
-        });
-      } else {
-        console.error('No active workout ID found');
-        this.router.navigate(['/Home']);
-      }
+      // Fügen Sie die Übung zum temporären Array im Service hinzu
+      this.workoutService.addTemporaryExercise(newWorkoutExercise);
+      this.router.navigate(['/NewWorkout']);
     } else {
       console.error('Incomplete form data');
     }
   }
+  
   
   calculateCalories(totalReps: number, weight: number) {
     // Eine einfache Formel zur Kalorienberechnung
