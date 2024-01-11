@@ -64,3 +64,18 @@ body {
   border-radius: 10px; 
 }
 
+.delete-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+.delete-button img {
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+}
+
+
+
