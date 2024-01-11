@@ -5,6 +5,7 @@ import { Timestamp } from "@firebase/firestore-types";
 import { Workout } from '../Model/workout.model';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
+import { Exercise } from '../exercise-input/exercise-input.component';
 
 @Component({
   selector: 'app-workout-list',
@@ -18,6 +19,7 @@ export class WorkoutListComponent implements OnInit {
   pagedWorkouts: Workout[] = [];
   pageIndex = 0;
   pageSize = 5;
+
 
   constructor(private firestore: AngularFirestore, private datePipe: DatePipe) {}
 
@@ -57,6 +59,19 @@ export class WorkoutListComponent implements OnInit {
 
   onWorkoutClick(workout: Workout): void {
     console.log(this.workouts.length);
+  }
+
+  deleteWorkout(workout: Workout): void {
+    this.firestore.collection('Workouts')
+    .ref
+    .where('name', '==', workout.name)
+    .where('date', '==', workout.date)
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        doc.ref.delete();
+      });
+    });
   }
 
   onPageChange(event: PageEvent) {

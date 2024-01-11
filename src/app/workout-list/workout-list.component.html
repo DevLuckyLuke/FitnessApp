@@ -10,9 +10,14 @@
             <div *ngFor="let workout of pagedWorkouts" class="workout-item" (click)="onWorkoutClick(workout)">
                 <p>{{ workout.name ? workout.name : 'Unnamed'}}</p>
                 <p>{{ formattedWorkoutDate(workout.date) }}</p>
+                <button class="delete-button" (click)="deleteWorkout(workout)">
+                    <img src="assets/trash-icon.jpg" alt="Delete">
+                </button>
             </div>
-            <mat-paginator [pageIndex]="pageIndex" [pageSize]="pageSize" [length]="workouts.length" (page)="onPageChange($event)">
-            </mat-paginator>
+            <div>
+                <mat-paginator [pageIndex]="pageIndex" [pageSize]="pageSize" [length]="workouts.length" (page)="onPageChange($event)">
+                </mat-paginator>
+            </div>
             <button class="back-button" routerLink="/Home">Home</button>
         </div>
     </body>
