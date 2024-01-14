@@ -5,6 +5,10 @@ import { Workout } from '../Model/workout.model';
 import { StrengthWorkoutExercise } from '../Model/strength-workout-exercise.model';
 import { CardioWorkoutExercise } from '../Model/cardio-workout-exercise';
 
+/*
+  Made with the help of ChatGPT
+*/
+
 @Injectable({
   providedIn: 'root'
 })

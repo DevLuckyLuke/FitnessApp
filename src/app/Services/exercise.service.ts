@@ -3,6 +3,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Exercise } from '../Model/exercise.model';
 
+/*
+  Made with the help of ChatGPT
+*/
 
 @Injectable({
   providedIn: 'root'

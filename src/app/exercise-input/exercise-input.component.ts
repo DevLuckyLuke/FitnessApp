@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
+/*
+  Made with the help of ChatGPT
+*/
+
 export interface Exercise {
   title: string;
   bodyArea: string;

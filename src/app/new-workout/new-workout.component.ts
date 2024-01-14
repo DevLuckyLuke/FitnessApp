@@ -5,6 +5,9 @@ import { StrengthWorkoutExercise } from '../Model/strength-workout-exercise.mode
 import { Workout } from '../Model/workout.model';
 import { CardioWorkoutExercise } from '../Model/cardio-workout-exercise';
 
+/*
+  Made with the help of ChatGPT
+*/
 
 @Component({
   selector: 'app-new-workout',

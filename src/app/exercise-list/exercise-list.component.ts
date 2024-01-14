@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
+/*
+  Made with the help of ChatGPT
+*/
+
 @Component({
   selector: 'app-exercise-list',
   templateUrl: './exercise-list.component.html',

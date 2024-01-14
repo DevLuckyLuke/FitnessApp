@@ -5,6 +5,10 @@ import { WorkoutService } from '../Services/workout.service'; // Importieren Sie
 import { Exercise } from '../Model/exercise.model';
 import { StrengthWorkoutExercise } from '../Model/strength-workout-exercise.model'; // Importieren Sie das WorkoutExercise-Modell
 
+/*
+  Made with the help of ChatGPT
+*/
+
 @Component({
   selector: 'app-select-strength-exercise',
   templateUrl: './select-strength-exercise.component.html',

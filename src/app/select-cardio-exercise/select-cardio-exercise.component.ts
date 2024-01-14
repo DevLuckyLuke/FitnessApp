@@ -5,6 +5,10 @@ import { WorkoutService } from '../Services/workout.service';
 import { Exercise } from '../Model/exercise.model';
 import { CardioWorkoutExercise } from '../Model/cardio-workout-exercise';
 
+/*
+  Made with the help of ChatGPT
+*/
+
 @Component({
   selector: 'app-select-cardio-exercise',
   templateUrl: './select-cardio-exercise.component.html',

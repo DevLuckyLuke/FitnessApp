@@ -7,6 +7,10 @@ import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { Exercise } from '../exercise-input/exercise-input.component';
 
+
+/*
+  Made with the help of ChatGPT
+*/
 @Component({
   selector: 'app-workout-list',
   templateUrl: './workout-list.component.html',
