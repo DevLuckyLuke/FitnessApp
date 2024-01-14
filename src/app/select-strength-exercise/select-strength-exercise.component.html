@@ -8,6 +8,7 @@
 <body>
 <div class="container">
   <h1>Exercise</h1>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
   <form (ngSubmit)="addExercise()">
     <label for="exercise-select">Choose Exercise</label>
     <select id="exercise-select" name="exercises" [(ngModel)]="selectedExercise">

@@ -15,6 +15,7 @@ export class SelectCardioExerciseComponent implements OnInit {
   selectedExercise: Exercise | null = null;
   km: number | null = null;
   time: number | null = null;
+  errorMessage: string | null = null;
 
   constructor(
     private exerciseService: ExerciseService,
@@ -45,9 +46,10 @@ export class SelectCardioExerciseComponent implements OnInit {
   
       // Fügen Sie die Übung zum temporären Array im Service hinzu
       this.workoutService.addTemporaryExercise(newWorkoutExercise);
+      this.errorMessage = null;
       this.router.navigate(['/NewWorkout']);
     } else {
-      console.error('Incomplete form data');
+      this.errorMessage = 'Bitte füllen Sie alle Formularfelder aus.';
     }
   }
   
@@ -63,6 +65,5 @@ export class SelectCardioExerciseComponent implements OnInit {
     return caloriesBurned;
   }
 }
-
 
 
