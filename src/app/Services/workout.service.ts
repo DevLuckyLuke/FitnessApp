@@ -188,6 +188,10 @@ export class WorkoutService {
   getTemporaryWorkoutName(): string {
     return this.temporaryWorkoutName;
   }
+
+  clearTemporaryWorkoutName() {
+    this.temporaryWorkoutName = '';
+  }
   
 
 }

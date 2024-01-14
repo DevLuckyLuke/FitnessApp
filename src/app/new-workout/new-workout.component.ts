@@ -13,8 +13,8 @@ import { CardioWorkoutExercise } from '../Model/cardio-workout-exercise';
 })
 export class NewWorkoutComponent implements OnInit {
   exercises: (CardioWorkoutExercise | StrengthWorkoutExercise)[] = [];
-  workoutId: string = ''; // Die ID des Workouts
-  workoutName: string = ""; // Der Name des Workouts
+  workoutId: string = ''; 
+  workoutName: string = ""; 
   temporaryExercises: (CardioWorkoutExercise | StrengthWorkoutExercise)[] = [];
   temporaryWorkoutName: string = '';
   
@@ -33,6 +33,7 @@ export class NewWorkoutComponent implements OnInit {
       this.workoutService.saveWorkout(this.temporaryWorkoutName, exercises).then(() => {
         console.log('Workout erfolgreich gespeichert');
         this.workoutService.clearTemporaryExercises();
+         this.workoutService.clearTemporaryWorkoutName();
         this.router.navigate(['/Workouts']);
       }).catch(error => {
         console.error('Fehler beim Speichern des Workouts:', error);
