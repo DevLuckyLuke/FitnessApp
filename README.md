@@ -1,27 +1,39 @@
-# FitnessApp
+# Project Title
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+A fitness tracking app for saving daily workouts and displaying the statistics via a dashboard.
+With Fit4U, exercises can be created and the exercises can be selected for a workout. When selecting an exercise within a workout, the respective number of repetitions as well as the weight can be specified and saved.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Before you begin, ensure you have met the following requirements:
+- Node.js
+- Angular CLI
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Step-by-step instructions on how to install your project. For example:
 
-## Build
+1. Clone the repo: `git clone https://github.com/your-username/your-repo.git`
+2. Navigate into the project directory: `cd your-repo`
+3. Install dependencies: `npm install`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Running unit tests
+Instructions on how to run your project. For example:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Start the development server: `ng serve --open`
+2. Your default browser should open and navigate to `http://localhost:4200`
 
-## Running end-to-end tests
+To be able to use it from outside of your server you will need to forward the port 4200
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Features
 
-## Further help
+Fit4U works both on mobile or desktop browser resolutions. \
+As a user, you are able to see your training statistics via a dashboard so that you have an overview of your progress. \
+You can create a new Workout and add the exercises you did in that workout to it
+Each Exercise is categorized into Strength or Cardio Exercise. \
+There are a lot pre existing Exercises but you can add new exercises whenever you want. \
+You can list all workouts and delete them if you wish so
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
