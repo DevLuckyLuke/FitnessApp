@@ -12,6 +12,10 @@ import { Exercise } from '../exercise-input/exercise-input.component';
   templateUrl: './workout-list.component.html',
   styleUrls: ['./workout-list.component.scss']
 })
+
+/*
+  Made with the help of Github copilot
+*/
 export class WorkoutListComponent implements OnInit {
   workouts: Workout[] = [];
   workoutsSubscription: Subscription = new Subscription;
@@ -24,19 +28,6 @@ export class WorkoutListComponent implements OnInit {
   constructor(private firestore: AngularFirestore, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
-    /*this.firestore.collection<Workout>('Workouts', ref => ref.orderBy('date', 'desc'))
-      .get().toPromise().then(querySnapshot => {
-        if (querySnapshot) {
-          this.workouts = querySnapshot.docs.map(doc => doc.data() as Workout);
-          this.workouts.forEach(workout => {
-            console.log("Workout: " + workout.name + " " + workout.date);
-          });
-          console.log("Workouts loaded");
-          this.updatePagedWorkouts();
-          
-        }
-      });
-*/
 
     this.workoutsSubscription = this.firestore.collection<Workout>('Workouts', ref => ref.orderBy('date', 'desc'))
     .valueChanges().subscribe((workouts: Workout[]) => {

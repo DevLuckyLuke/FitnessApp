@@ -98,14 +98,9 @@ export class WorkoutService {
       );
   }
 
-  /*getAllCardioExercises(): Observable<CardioWorkoutExercise[]> {
-    return this.firestore.collectionGroup<CardioWorkoutExercise>('Workout-Exercise-List')
-      .valueChanges({ idField: 'id' })
-      .pipe(
-        map(exercises => exercises as CardioWorkoutExercise[])
-      );
-  }*/
-
+  /*
+  Made with the help of Github copilot
+*/
   getCardioExercisesFromLastDays(selectedTimespan: number): Observable<CardioWorkoutExercise[]> {
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - selectedTimespan);
@@ -133,6 +128,9 @@ export class WorkoutService {
     );
   }
 
+  /*
+  Made with the help of Github copilot
+  */
   getStrengthExercisesFromLastDays(selectedTimespan: number): Observable<StrengthWorkoutExercise[]> {
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - selectedTimespan);

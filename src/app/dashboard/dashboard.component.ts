@@ -11,6 +11,10 @@ import { StrengthStats } from '../Model/dashboard_dtos/strength-stats.model';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
+/*
+  Made with the help of Github copilot
+*/
 export class DashboardComponent {
   selectedCategory: string = '';
   selectedTimespan: number = 30;

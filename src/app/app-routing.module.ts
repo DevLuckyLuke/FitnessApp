@@ -11,7 +11,7 @@ import { SelectCategoryComponent } from './select-category/select-category.compo
 import { SelectCardioExerciseComponent } from './select-cardio-exercise/select-cardio-exercise.component';
 
 
-//Syntax of paths was advised by copilot
+//Syntax of Routing was advised by copilot
 const routes: Routes = [
   {path: '', redirectTo: '/Home', pathMatch:'full'},
   {path: 'Home', component: HomeComponent},
