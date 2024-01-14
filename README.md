@@ -1,6 +1,6 @@
-# Project Title
+# Fit4U
 
-A fitness tracking app for saving daily workouts and displaying the statistics via a dashboard.
+Is a fitness tracking app for saving daily workouts and displaying the statistics via a dashboard.
 With Fit4U, exercises can be created and the exercises can be selected for a workout. When selecting an exercise within a workout, the respective number of repetitions as well as the weight can be specified and saved.
 
 ## Prerequisites
